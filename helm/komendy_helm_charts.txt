@@ -1,0 +1,26 @@
+[tworzenie i sprawdzanie namespace]
+kubectl create namespace monitoring - tworzy oddzielny namespace
+kubectl get namespace - pokazuje wszystkie namespace
+
+
+[tworzenie struktury]
+helm create webapp1 						- stworzenie struktury charts
+
+[instlacja chart]
+helm install mywebapp-release webapp1/  -n devstage      	- instalacja będąc w nadrzędnym folderze
+helm install <nazwa_release> <folder z chart> -n <namespace>
+kubectl get all -n devstage                                 	- sprawdzenie czy się zainsalowały wszystkie komponenty
+
+[prod i dev]
+helm install mywebapprelease-dev webapp1/ --values webapp1/values.yaml -f webapp1/values-dev.yaml  -n helmdev 
+helm install <nazwa release> <nazwa_folderu> --values <values_path> -f <values-dev_path>  -n helmdev 
+
+helm install mywebapprelease-prod webapp1/ --values webapp1/values.yaml -f webapp1/values-prod.yaml  -n helmprod
+
+
+[po zmianach - dodanie variables w templates]
+helm upgrade mywebapp-release   webapp1/ -n devstage --values  webapp1/values.yaml
+helm upgrade <nazwa release>   <chart path> -n <namespace> --values  <value path> 
+
+[uruchomienie]
+kubectl port-forward service/myhelmfirstapp 8888:80 -n helmlearn --address 0.0.0.0

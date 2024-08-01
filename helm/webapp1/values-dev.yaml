@@ -1,0 +1,7 @@
+namespace: helmdev
+
+configmap:
+  data:
+    CUSTOM_HEADER: "Welcome to Dev!"
+
+

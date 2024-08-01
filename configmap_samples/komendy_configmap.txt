@@ -1,0 +1,37 @@
+[ręczne stworznie pliku ze zmiennymi - config map]
+kubectl create configmap my-configmap --from-literal=MYSQL_DATABASE=accounts --from-literal=MYSQL_ROOT_PASSWORD=abcd
+
+kubectl get cm 				- sprawdzenie obecnych configmapów
+kubectl get cm my-configmap -o yaml  	- odczytanie pliku
+kubectl describe cm my-configmap 	- opis cm	
+
+
+
+
+[deklaratywne podejście]
+vim samplecm.yaml
+kubectl apply -f samplecm.yaml
+
+
+
+
+[w deklaracji poda - wszystkie zmienne z pliku]
+envFrom:
+  - configMapRef:
+      name: my-configmap 
+
+[w deklaracji poda - konkretna zmienna z pliku]
+env:
+  - name: DB_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: my-configmap
+	key: value_DB_HOST
+
+
+# Login to Pod and check variables & files
+kubectl exec --stdin --tty configmap-demo-pod -- /bin/sh
+
+[namespaces]
+kubectl create namespace monitoring - tworzy oddzielny namespace
+kubectl get namespace - pokazuje wszystkie namespace

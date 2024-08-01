@@ -1,0 +1,36 @@
+[repo artifact]
+helm repo    											- pokazuje wszystkie komendy	
+helm repo list											- pokazuje liste aktualnych repo
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts  		- dodanie repo do listy
+
+[instalacja]
+helm install my-prometheus prometheus-community/prometheus --version 25.24.1			- instalacja aplikacji my-prometheus to nazwa releases
+kubectl create namespace dev 
+helm install my-prometheus-dev prometheus-community/prometheus --version 25.24.1 --namespace dev
+helm install <nazwa_release> prometheus-community/prometheus --version 25.24.1 --namespace dev
+
+[informacje]
+kubectl get all -n dev										- pokazę wszystko co zostało stworzone przez helm
+kubectl get all -A 										- pokazuje listę wszystkiego
+helm ls --all-namespaces 									- pokazuje wszystkie releases (podczas install podaje nazwe release) (tylko deploy)
+helm ls --all-namespaces -a									- pokazuje wszystjue intalacje (także unistalled)
+
+helm ls -n testhelm										- pokazuje wszystkie instalacje dla konkretnego namespace
+kubectl get all -n testhelm									- pokazuje wszystko dla namespace	
+
+[upgrade]
+helm upgrade my-prometheus-dev prometheus-community/prometheus --version 25.20.1 --namespace dev - upgrade do innej wersji
+helm upgrade release-pinia -n testhelm webapp1/  --values webapp1/values.yaml
+helm upgrade <releaseName> -n <nameSpace> <ścieżka do helm chart>  --values <ścieżka do values.yaml>
+
+
+
+[uninstall]
+helm uninstall my-prometheus --keep-history							- dezinstlacja (keep-history zapewnia rollback)
+
+[rollback]
+helm ls --all-namespaces -a
+helm history my-prometheus-devzz -n devstage
+helm rollback  my-prometheus-devzz 1 -n devstage						- cofnięcie do konkretnego deployu [np.1]
+
+helm show values prometheus-community/prometheus						- żeby zrobić custoim the chart before installing
