@@ -1,0 +1,12 @@
+appName: myhelmfirstapp
+
+namespace: helmlearn
+
+configmap:
+  name: myconfigmapv1.0
+  data:
+    CUSTOM_HEADER: "This app was deployed with helm!"
+
+image:
+  name: devopsjourney1/mywebapp
+  tag: latest
