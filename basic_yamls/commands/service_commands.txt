@@ -1,0 +1,29 @@
+[imperative]
+kubectl expose pod webapp --type=NodePort --port=80 --name=fleetman-webapp
+
+[declarative]
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-webapp
+
+spec:
+  selector:
+    app: webapp
+
+  ports:
+    - name: http
+      port: 80 # Port for Service
+      nodePort: 30080 # Port for node (port over 30 000)
+
+  type: NodePort
+
+
+[check connection to nodeport]
+minikube service queweb-service --url
+curl http://192.168.49.2:30080
+curl http://192.168.49.2:nodePort_yaml
+
+[forward from AWS port->service_exposed_port]
+kubectl port-forward service/fleetman-webapp  30020:80 --address 0.0.0.0 &
+kubectl port-forward service/fleetman-webapp port aws_inbound_port:port dla service --address 0.0.0.0 &

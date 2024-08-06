@@ -1,0 +1,5 @@
+kubectl apply -f pod.yaml
+kubectl get all
+kubectl describe pod webapp     - show events
+kubectl exec webapp ls          - show directories in pod
+kubectl exec webapp -it sh      - shell terminal
