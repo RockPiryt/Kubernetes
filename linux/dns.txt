@@ -1,0 +1,2 @@
+cat /etc/resolv.conf - ustawienia dns 
+nslookup google.com - sprawdzenie ip adres dla wybranej domeny np. google.com

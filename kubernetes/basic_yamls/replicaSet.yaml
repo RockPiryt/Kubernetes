@@ -1,0 +1,17 @@
+# ReplicaSet 
+apiVersion: v1
+kind: RepilicaSet
+metadata: 
+  name: webapp
+spec:
+  replicas: 2 # for frontend min 2 replica on diffrent nodes
+  template: # pod definiton
+    metadata:
+      name: webapp
+      labels:
+        app: webapp # Label for service
+    spec:
+      containers:
+      - name: webapp
+        image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
+

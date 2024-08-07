@@ -1,0 +1,1 @@
+kubectl get cm -n namespace default-rules -o yaml - pokaże w yaml config mape

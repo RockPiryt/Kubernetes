@@ -1,0 +1,8 @@
+kubectl apply -f replicaSet.yaml
+kubectl get all
+
+kubectl describe replicaset webapp      - show events
+kubectl describe rs webapp              - show events
+
+
+kubectl ddelete rs webapp               - usuniecie replica

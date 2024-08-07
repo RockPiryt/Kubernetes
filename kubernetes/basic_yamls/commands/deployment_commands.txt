@@ -1,0 +1,6 @@
+
+#rollout przydatny podczas emergency situation - przywraca dobry obraz / stan przed zmian
+kubectl rollout status deployment webapp                        -  pokauje co się dzieje podczas zmiany np. obrazu
+kubectl rollout history deployment webapp                       - pokazuje historę rollout
+kubectl rollout undo deployment webapp --to-revision=2          - wycofanie do konkretnej rewizji
+#kubernetes pamieta do 10 revision
