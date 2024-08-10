@@ -1,0 +1,26 @@
+netstat -tuln
+netstat -tuln | grep 9093
+
+-t for TCP ports
+-u for UDP ports
+-l for only listening sockets
+-n to show the port number instead of the service name
+---------------------------------------------------------------------------------
+
+ss -tuln
+ss -tuln | grep 9093
+---------------------------------------------------------------------------------
+
+sudo lsof -i -P -n
+
+-i for selecting the listing of network files
+-P to inhibit the conversion of port numbers to port names
+-n to inhibit the conversion of network numbers to host names
+
+
+
+---------------------------------------------------------------------------------
+sudo apt-get install nmap
+sudo nmap -sT -O localhost
+
+

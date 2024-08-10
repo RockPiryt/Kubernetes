@@ -1,15 +1,16 @@
 kubectl apply -f pod.yaml
 kubectl get all
+
 kubectl describe pod webapp                         - show events
+kubectl logs <name_pod>                             - show logs
+kubectl logs -f <name_pod>                          - show logs freeze console
+
 kubectl exec webapp ls                              - show directories in pod
 kubectl exec webapp -it sh                          - shell terminal
 kubectl exec nazwa_pod ls etc/ -n maestro           - wyświetli wnętrze poda
 kubectl exec -it <pod-name> -- /bin/bash            - a Bash shell session
 kubectl exec -it <pod-name> -- /bin/sh              - If the container does not have Bash installed - to działa w argocd
 kubectl exec -it <pod-name> -c <container-name> -- /bin/bash      - In some cases, you might need to specify the container name if the pod has more than one containe
-
-
-
 
 
 kubectl get pods

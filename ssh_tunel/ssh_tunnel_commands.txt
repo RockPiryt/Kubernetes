@@ -1,0 +1,18 @@
+
+[windows]
+ssh -i C:\Users\pkimak\.ssh\id-rsa -L 8882:localhost:8882 seu@10.114.181.125 
+netstat -ano | findstr :8882        - check PID
+tasklist /fi "PID eq 8882"          - check that is ssh tunnel
+- add aws instance to hosts 
+- add port to aws to inbound rules
+
+
+[ubuntu]
+/home/seu/.ssh/authorized_keys
+chmod 777 authorized_keys
+vi authorized_keys (add private windows key)
+chmod 700  /home/seu/.ssh
+chmod 600 /home/seu/.ssh/authorized_keys
+
+kubectl port-forward service/fleetman-webapp  30020:80 --address 0.0.0.0 &
+kubectl port-forward service/fleetman-webapp port aws_inbound_port:port dla service --address 0.0.0.0 &

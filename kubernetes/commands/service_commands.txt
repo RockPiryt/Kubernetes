@@ -27,3 +27,5 @@ curl http://192.168.49.2:nodePort_yaml
 [forward from AWS port->service_exposed_port]
 kubectl port-forward service/fleetman-webapp  30020:80 --address 0.0.0.0 &
 kubectl port-forward service/fleetman-webapp port aws_inbound_port:port dla service --address 0.0.0.0 &
+
+
