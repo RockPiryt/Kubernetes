@@ -1,0 +1,11 @@
+find ~ -type f \( -name "*.yaml" -o -name "*.yml" \)                            -   wszystkie yaml file in your home directory
+
+sudo find / -type f \( -name "*.yaml" -o -name "*.yml" \)                       - wszystkie yaml file in the entire filesystem
+
+
+find ~ -type f -name "my-config.yaml"                                           - szukanie konkretnego pliku o nazwie
+
+find /path/to/directory -type f \( -name "*.yaml" -o -name "*.yml" \)           -   wszystkie yaml file w konkretnym folderze
+
+
+find ~ -type f \( -iname "*.yaml" -o -iname "*.yml" \)                         -   wszystkie yaml file w konkretnym folderze case insensitive 

@@ -1,0 +1,2 @@
+alertmanager/alertmanager_email_config_smtp.yaml
+alertmanager/alertmanager_gmail_config.yaml

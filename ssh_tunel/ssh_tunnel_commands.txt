@@ -8,7 +8,7 @@ tasklist /fi "PID eq 8882"          - check that is ssh tunnel
 
 
 [ubuntu]
-/home/seu/.ssh/authorized_keys
+cd /home/seu/.ssh/authorized_keys
 chmod 777 authorized_keys
 vi authorized_keys (add private windows key)
 chmod 700  /home/seu/.ssh
