@@ -6,8 +6,14 @@ export const options = {
     duration: '30s',
     tresholds: {
         http_req_duration: ['p(95)<100'],
-        http_req_failed: ['rate<0.01']
+        http_req_failed: ['rate<0.01'],
 
+        //Metric types
+        http_reqs: ['count>20'], // count type              1,2,3,4...
+        http_reqs: ['rate>4'], // rate type -               jedn/sek
+        http_req_failed: ['rate<0.1'], // rate type
+        vus: ['value>9'], // gauge type                     between 2 values
+        http_req_duration: ['max<2000'] //trend             min, max, avg, p(90), p(95) 2000ms=2sek
     }
 }
 

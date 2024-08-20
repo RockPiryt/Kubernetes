@@ -1,0 +1,5 @@
+minikube addons list - wyświetlenie możliwych wtyczek dla minikube
+minikube addons enable metric-server - włączenie metric server
+
+kubectl top pod - obecne zużycie CPU i memory przez pody
+kubectl top node - obecne  zużycie CPU i memory przez node

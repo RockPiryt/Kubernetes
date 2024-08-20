@@ -1,0 +1,8 @@
+kubectl config get-contexts                                                                         - list all contexts to clusters
+
+kubectl config use-context <context-name>                                                           - change context to cluster
+
+kubectl config current-context                                                                      - to verify the current context
+
+
+kubectl config set-context --current --namespace=<namespace-name>                                   - Set a default namespace
