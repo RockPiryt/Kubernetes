@@ -1,0 +1,3 @@
+tar -czvf name-of-archive.tgz folder-to-pack/           - to pack folder to .tgz file (c- create archive, z-uncompress)
+tar -xzvf name-of-archive.tgz                           - to unpack .tgz file (x-export to folder, z-compress)
+

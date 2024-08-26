@@ -3,7 +3,13 @@ import { sleep, check, group} from 'k6';
 
 export const options = {
     thresholds: {
-        http_req_duration: ['p(95)<250']
+        http_req_duration: ['p(95)<250'],
+
+        'group_duration{group:::Main page}': ['p(95)<200'], //threshold for group
+        'group_duration{group:::Main page::Assets}': ['p(95)<200'], //threshold for subgroup
+        
+        'group_duration{group:::News page}': ['p(95)<200']
+
     }
 }
 

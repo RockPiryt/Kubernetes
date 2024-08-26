@@ -1,0 +1,27 @@
+
+helm add repo <labela> <adres>
+helm repo update        - aktualizacja repozytoriów
+
+
+helm install <nasza_nazwa> <labela>/<nazwa_paczki> 
+
+[monitoring stack]
+helm add repo prom-repo <adres>
+helm install monitoring-stack prom-repo/kube-prometheus-stack
+
+
+helm list               - lista zainstlowanych paczek
+helm repo list          - lista repozytoriów
+
+helm unistall <nasza_nazwa> 
+
+
+--------------------------------------------------------
+helm show values <labela>/<nazwa_paczki> 
+
+helm show values <labela>/<nazwa_paczki> | grep -i password
+helm show values prom-repo/kube-prometheus-stack | grep -i password                                     - szukanie wartości w values
+
+helm install monitoring-stack prom-repo/kube-prometheus-stack  --set adminPassword=blabla              - nadpisanie wartości podczas instalacjilist
+helm upgrade monitoring-stack prom-repo/kube-prometheus-stack  --set adminPassword=blabla               - nadpisanie wartości po instalacji
+
