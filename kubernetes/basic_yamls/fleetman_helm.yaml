@@ -1,0 +1,48 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  selector:
+    matchLabels:
+      app: webapp
+  replicas: {{ .Values.webapp.numOfWebReplica }}
+  template: # template for the pods
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        # Note to deployer - add -dev at the end of here for development version
+        # image: richardchesterwood/k8s-fleetman-helm-demo:v1.0.0
+        # image: {{ upper .Values.dockerRepoName }}/k8s-fleetman-helm-demo:v1.0.0                               - funkcja string
+        # image: {{ default "richardchesterwood" .Values.dockerRepoName }}/k8s-fleetman-helm-demo:v1.0.0        - funkcja default
+        image: {{ .Values.dockerRepoName | upper }}/k8s-fleetman-helm-demo:v1.0.0                                 #- pipeline jedna funkcja
+        image: {{ .Values.dockerRepoName | default "richardchesterwood" | upper }}/k8s-fleetman-helm-demo:v1.0.0  #- pipeline dwie funkcje
+        image: {{ .Values.dockerRepoName | default "richardchesterwood" | lower }}/k8s-fleetman-helm-demo:v1.0.0{{ if eq .Values.environment "dev"}}-dev{{ end }} # if statement with word
+        image: {{ .Values.dockerRepoName | default "richardchesterwood" | lower }}/k8s-fleetman-helm-demo:v1.0.0{{ if eq .Values.development true}}-dev{{ end }}   #if with bolean
+        image: {{ .Values.dockerRepoName | default "richardchesterwood" | lower }}/k8s-fleetman-helm-demo:v1.0.0{{ if .Values.development }}-dev{{ else }}-prod{{ end }} #if else with bolean
+
+
+
+
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-webapp
+
+spec:
+  selector:
+    app: webapp
+
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30080
+
+  type: NodePort

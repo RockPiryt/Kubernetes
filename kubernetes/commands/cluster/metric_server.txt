@@ -1,7 +1,8 @@
+[metric-server installation on kind]
+
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 
 kubectl edit deployment metrics-server -n kube-system
-
 
 In the editor that opens, find the args section and add the following arguments:
 - --kubelet-insecure-tls
@@ -10,3 +11,5 @@ In the editor that opens, find the args section and add the following arguments:
 kubectl get pods -n kube-system -l k8s-app=metrics-server
 kubectl top pod
 kubectl top pod -n <namespace>
+
+kbectl top node

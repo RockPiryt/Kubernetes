@@ -1,0 +1,21 @@
+[job]                                       - dopilnowanie aby pod miał status completed(pod wykonuje jakieś zadanie w kontenerze)
+kubectl apply -f job.yaml -n helmtest       - utworzenie joba
+kubectl get jobs -n helmtest
+kubectl describe job <nazwa_joba> -n helmtest
+kubectl get po -n helmtest                  - joby tworzą pody i sprawdzaja czy uda im sie osiagnac status completed
+kubectl delete job <job_name> -n helmtest 
+
+w yaml
+backofflimit:2                              - określa ile razy job podjemie próbe uruchomienia poda aby miał status completed a nie error
+
+------------------------------------------------------------------------------------------------------
+[cronjobs]                                                  - zaplanowane joby, będzie je wykonywał np co minute bedzie tworzył poda z zadaniem
+kubectl apply -f cronjob.yaml -n helmtest 
+kubectl get cronjobs -n helmtest
+kubectl describe cronjob <nazwa_cronjoba> -n helmtest
+kubectl get po -n helmtest                                  - cronjoby tworzą pody i sprawdzaja czy uda im sie osiagnac status completed
+kubectl delete cronjob <cronjob_name> -n helmtest           - trzeba usuwać cronjoba aby stale nie tworzył podów
+
+
+w yaml
+w schedule określamy częstotliwośc wykonywania joba         - crontabguru opisuje system

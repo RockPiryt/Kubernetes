@@ -1,0 +1,34 @@
+[1] - uruchomic pod z image
+k run --help
+k run nginx-pod --image=nginx:alpine                - create pod with image
+spr     
+k get po                   - spr ready
+k describe pod nginx-pod  - spr image
+
+[2]  - uruchomic pod z image i labela
+kubectl run messaging --image=redis:alpine --labels="tier=msg"
+spr     
+k get po                   - spr ready
+k describe pod messaging  - spr image, labele
+
+[3] - stworzyc namespace
+k create ns apx
+spr
+k get ns
+
+[4] - zapisac liste nodes do json w określonej path
+kubectl  get nodes -o json > /home/seu/kube-exam/nodes-apx.json
+spr
+cat /home/seu/kube-exam/nodes-apx.json
+
+[5] - stworzyc service dla poda z określonym portem
+k expose --help
+k expose pod messaging --name messaging-service --port 6379
+spr
+k get svc
+k describe svc messaging-service - spr lable, port i IP
+k get po -o wide - spr IP i port
+
+
+
+

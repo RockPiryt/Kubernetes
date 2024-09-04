@@ -14,5 +14,5 @@ vi authorized_keys (add private windows key)
 chmod 700  /home/seu/.ssh
 chmod 600 /home/seu/.ssh/authorized_keys
 
-kubectl port-forward service/fleetman-webapp  30020:80 --address 0.0.0.0 &
+kubectl port-forward service/fleetman-webapp  30020:80 --address 0.0.0.0 &      (--address 0.0.0.0 jako localhost & nie widze)
 kubectl port-forward service/fleetman-webapp port aws_inbound_port:port dla service --address 0.0.0.0 &

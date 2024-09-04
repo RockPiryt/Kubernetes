@@ -1,0 +1,19 @@
+kubectl get pods -o wide - pokazuje opis na którym nodzie obecnie znajduje sie pod
+--------------------------------------------------------------------------------------------------
+zabicie wybranego poda ręcznie
+# pokazuje opis na którym nodzie obecnie znajduje sie pod
+kubectl get pods -o wide
+
+# sprawdzenie contenier id dla poda
+kubectl describe pod <pod-name>
+
+# znalezienie id kontenrea "kind noda" (kind jest jako kontener)
+docker ps
+
+# Wejscie do kontenrea kinda
+docker exec -it <kind-node-container-id> /bin/sh
+
+# zabicie ręczne kontenrea poda
+crictl stop <container-id> - nie usuwa cos zle
+crictl rm <container-id>
+

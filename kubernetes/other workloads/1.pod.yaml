@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-job-pod
+spec: #Pod
+  containers:
+  - name: long-job
+    image: python 
+    command: ["python"]
+    args: ["-c", "import time; print('starting'); time.sleep(30); print('done')"]
+  restartPolicy: Never

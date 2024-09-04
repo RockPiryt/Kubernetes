@@ -25,3 +25,8 @@ helm show values prom-repo/kube-prometheus-stack | grep -i password             
 helm install monitoring-stack prom-repo/kube-prometheus-stack  --set adminPassword=blabla              - nadpisanie wartości podczas instalacjilist
 helm upgrade monitoring-stack prom-repo/kube-prometheus-stack  --set adminPassword=blabla               - nadpisanie wartości po instalacji
 
+---------------------------------------------------
+helm create chart_name          - tworzy defaultowy chart
+helm template .                 - (będąc w folderze charta) robi echo złączonych plików yaml z folderu template
+helm template . --set webapp.numOfWebReplica=155        - ręczne ustawienie zmienne zamiast w value 
+helm template . --debug       - sprawdzenie z czym ma problem parser przy tworzeniu yaml
